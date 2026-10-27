@@ -1,0 +1,20 @@
+# Python scripts and processing data
+*.py
+*.ps1
+*.txt
+__pycache__/
+*.json
+!vercel.json
+
+# Intermediate OCR and raw test images (only final_aligned_screenshots is needed)
+extracted_images/
+extracted_screenshots/
+rotated_fixes/
+test_enhance/
+test_rot/
+Accenture-Test/
+
+# Tooling and IDE configuration
+.vscode/
+.git/
+.gitignore

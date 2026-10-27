@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Candidate Login - Accenture Technical MCQ Practice Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --primary-light: #a78bfa;
+            --bg-dark: #0f172a;
+            --card-bg: rgba(30, 27, 75, 0.75);
+            --border: rgba(255, 255, 255, 0.15);
+            --text-main: #f8fafc;
+            --text-muted: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #09090b 0%, #1e1b4b 50%, #2e1065 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+            color: var(--text-main);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.25) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.2) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .login-card {
+            width: 100%;
+            max-width: 480px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 32px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.05);
+            position: relative;
+            z-index: 10;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(124, 58, 237, 0.25);
+            border: 1px solid rgba(167, 139, 250, 0.3);
+            color: #d8b4fe;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+        }
+
+        .login-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .login-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
+
+        .input-wrap {
+            position: relative;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 13px 16px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            color: #ffffff;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        .form-input::placeholder {
+            color: #64748b;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: inherit;
+            background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4);
+            margin-top: 8px;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(124, 58, 237, 0.5);
+        }
+
+        .btn-submit:active {
+            transform: translateY(1px);
+        }
+
+        .error-msg {
+            display: none;
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #fca5a5;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 28px 0 20px;
+            color: #64748b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .quick-users-label {
+            font-size: 0.85rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .quick-btns-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .btn-quick {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #e2e8f0;
+            padding: 10px 8px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-quick:hover {
+            background: rgba(124, 58, 237, 0.3);
+            border-color: var(--primary-light);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .accounts-info {
+            margin-top: 24px;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 14px 16px;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .accounts-info strong {
+            color: #e2e8f0;
+        }
+
+        .accounts-table {
+            width: 100%;
+            margin-top: 8px;
+            border-collapse: collapse;
+        }
+
+        .accounts-table th, .accounts-table td {
+            padding: 4px 6px;
+            text-align: left;
+        }
+
+        .accounts-table th {
+            color: #cbd5e1;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .accounts-table td {
+            font-family: monospace;
+            color: #a78bfa;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-card">
+        <div class="brand-pill">Accenture Technical Prep</div>
+        <h1 class="login-title">Student Sign In</h1>
+        <p class="login-subtitle">Choose your user account to track your individual MCQ scores, practice questions, and view verified explanations.</p>
+
+        <div class="error-msg" id="errorMsg">
+            <span>⚠️</span> <span id="errorText">Invalid username or password. Please try again.</span>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <div class="form-group">
+                <label class="form-label" for="username">Username</label>
+                <div class="input-wrap">
+                    <input type="text" id="username" class="form-input" placeholder="e.g. user1" required autofocus>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="password">Password</label>
+                <div class="input-wrap">
+                    <input type="password" id="password" class="form-input" placeholder="e.g. usr1" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Sign In to Practice Portal →</button>
+        </form>
+
+        <div class="divider">or quick login</div>
+
+        <div class="quick-users-label">Select Candidate Account:</div>
+        <div class="quick-btns-grid">
+            <button class="btn-quick" onclick="quickLogin('user1', 'usr1')">
+                👤 user1
+            </button>
+            <button class="btn-quick" onclick="quickLogin('user2', 'usr2')">
+                👤 user2
+            </button>
+            <button class="btn-quick" onclick="quickLogin('user3', 'usr3')">
+                👤 user3
+            </button>
+        </div>
+
+        <div class="accounts-info">
+            <div><strong>Registered Credentials (Individual Test Profiles):</strong></div>
+            <table class="accounts-table">
+                <thead>
+                    <tr><th>Candidate</th><th>Username</th><th>Password</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Friend 1</td><td>user1</td><td>usr1</td></tr>
+                    <tr><td>Friend 2</td><td>user2</td><td>usr2</td></tr>
+                    <tr><td>Friend 3</td><td>user3</td><td>usr3</td></tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 8px; font-size: 0.76rem; color: #64748b;">
+                * Each user profile maintains its own independent score, selected answers, and question progress.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const VALID_USERS = {
+            "user1": "usr1",
+            "user2": "usr2",
+            "user3": "usr3"
+        };
+
+        function showError(msg) {
+            const el = document.getElementById('errorMsg');
+            document.getElementById('errorText').textContent = msg;
+            el.style.display = 'flex';
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const u = document.getElementById('username').value.trim().toLowerCase();
+            const p = document.getElementById('password').value.trim();
+
+            if (VALID_USERS[u] && VALID_USERS[u] === p) {
+                // Set active user session
+                localStorage.setItem('accenture_active_user', u);
+                window.location.href = 'accenture.html';
+            } else {
+                showError("Invalid username or password. Use user1 (usr1), user2 (usr2), or user3 (usr3).");
+            }
+        }
+
+        function quickLogin(u, p) {
+            document.getElementById('username').value = u;
+            document.getElementById('password').value = p;
+            localStorage.setItem('accenture_active_user', u);
+            window.location.href = 'accenture.html';
+        }
+
+        // If user is already logged in, redirect directly to portal or populate username
+        const currentActive = localStorage.getItem('accenture_active_user');
+        if (currentActive && VALID_USERS[currentActive]) {
+            document.getElementById('username').value = currentActive;
+        }
+    </script>
+</body>
+</html>

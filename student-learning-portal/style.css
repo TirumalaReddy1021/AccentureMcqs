@@ -1,0 +1,220 @@
+
+/* 1. Basic page settings */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+    color: #263238;
+    line-height: 1.6;
+}
+
+/* 2. Header */
+header {
+    background-color: #173b6c;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    margin: 0 0 12px;
+}
+
+/* 3. Navigation links */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+}
+
+nav a:hover {
+    background-color: #315b8f;
+}
+
+/* 4. Main content */
+main {
+    width: min(100% - 32px, 950px);
+    margin: 25px auto;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.07);
+    scroll-margin-top: 20px;
+}
+
+h2 {
+    color: #173b6c;
+    margin-top: 0;
+}
+
+h3 {
+    color: #315b8f;
+}
+
+/* 5. Lists and images */
+li {
+    margin-bottom: 6px;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 18px 0;
+    border-radius: 8px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #e0e6ed;
+    margin-top: 24px;
+}
+
+/* 6. Course table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+caption {
+    font-weight: bold;
+    padding: 10px;
+    color: #315b8f;
+}
+
+th,
+td {
+    border: 1px solid #dce3eb;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #eaf1fb;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8faff;
+}
+
+/* 7. Registration form */
+form label {
+    display: inline-block;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+form input:not([type="radio"]):not([type="checkbox"]),
+form select,
+form textarea {
+    width: 100%;
+    padding: 11px;
+    margin-bottom: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font: inherit;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    outline: 2px solid #7aa7e8;
+    border-color: #315b8f;
+}
+
+form input[type="radio"],
+form input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* 8. Buttons */
+button {
+    padding: 11px 18px;
+    margin: 8px 8px 0 0;
+    border: none;
+    border-radius: 6px;
+    background-color: #173b6c;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #315b8f;
+}
+
+button[type="reset"] {
+    background-color: #64748b;
+}
+
+button[type="reset"]:hover {
+    background-color: #475569;
+}
+
+/* 9. Messages displayed by JavaScript */
+#formMessage {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+#formMessage.success {
+    color: #166534;
+    background-color: #dcfce7;
+}
+
+#formMessage.error {
+    color: #991b1b;
+    background-color: #fee2e2;
+}
+
+/* 10. Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #173b6c;
+    color: white;
+}
+
+/* 11. Mobile-friendly layout */
+@media (max-width: 600px) {
+    section {
+        padding: 18px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    button {
+        width: 100%;
+        margin-right: 0;
+    }
+}
